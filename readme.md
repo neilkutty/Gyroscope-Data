@@ -14,7 +14,8 @@ library(mice)
 load('activity.Rdata')
 load('newData.Rdata')
 ```
-
+<br><br>
+#### <h3>See rendered Rmd file at [Rpubs](http://rpubs.com/sampsonsimpson/represearch1)</h3><br><br>
 **Loading and preprocessing the data**
 
 Show any code that is needed to
@@ -100,6 +101,8 @@ topInt <- ranked[which.max(ranked$averageSteps),]
 
 print(topInt)
 ```
+    interval averageSteps<br>
+    1      835     206.1698
 <br>
 <hr>
 <br>
@@ -121,6 +124,7 @@ Sum missing values
 x <- sum(is.na(activity))
 ```
 The number of missing values is `r x`
+The number of missing values is **2304**
 
 Impute the missing values using the `mice` package. Ensure reproducibility by setting seed.  We create a `mids` object and then `complete()` it into a data frame.
 ```{r imputeData, echo=TRUE, eval=FALSE}

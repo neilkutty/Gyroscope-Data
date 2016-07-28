@@ -116,8 +116,11 @@ $(document).ready(function () {
 </div>
 
 
-<p><code>{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE) library(dplyr) library(tidyr) library(chron) library(ggplot2) library(mice) load('activity.Rdata') load('newData.Rdata')</code></p>
-<p><strong>Loading and preprocessing the data</strong></p>
+<code>{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE) library(dplyr) library(tidyr) library(chron) library(ggplot2) library(mice) load('activity.Rdata') load('newData.Rdata')</code> <br><br> ####
+<h3>
+See rendered Rmd file at <a href="http://rpubs.com/sampsonsimpson/represearch1">Rpubs</a>
+</h3>
+<p><br><br> <strong>Loading and preprocessing the data</strong></p>
 <p>Show any code that is needed to</p>
 <p>Load the data (i.e. 𝚛𝚎𝚊𝚍.𝚌𝚜𝚟()) Process/transform the data (if necessary) into a format suitable for your analysis</p>
 <p><em>Answer:</em></p>
@@ -163,7 +166,7 @@ $(document).ready(function () {
 <p>```{r avgDailyActivity, echo=TRUE, eval=TRUE} omitData &lt;- na.omit(activity) ranked &lt;- omitData %&gt;% select(interval,steps) %&gt;% group_by(interval) %&gt;% summarize(averageSteps=mean(steps)) %&gt;% arrange(desc(averageSteps))</p>
 <p>ggplot(ranked, aes(x=interval,y=averageSteps)) + geom_line(stat=“identity”)</p>
 <p>topInt &lt;- ranked[which.max(ranked$averageSteps),]</p>
-print(topInt) ``` <br>
+print(topInt) ``` interval averageSteps<br> 1 835 206.1698 <br>
 <hr>
 <p><br> <strong>Imputing missing values</strong></p>
 <p>Note that there are a number of days/intervals where there are missing values (coded as 𝙽𝙰). The presence of missing days may introduce bias into some calculations or summaries of the data.</p>
@@ -175,7 +178,7 @@ print(topInt) ``` <br>
 <div id="answer" class="section level6">
 <h6><em>Answer:</em></h6>
 <p>Sum missing values</p>
-<p><code>{r sumNAs, echo=TRUE, eval=TRUE} #Number of Missing Values x &lt;- sum(is.na(activity))</code> The number of missing values is <code>r x</code></p>
+<p><code>{r sumNAs, echo=TRUE, eval=TRUE} #Number of Missing Values x &lt;- sum(is.na(activity))</code> The number of missing values is <code>r x</code> The number of missing values is <strong>2304</strong></p>
 <p>Impute the missing values using the <code>mice</code> package. Ensure reproducibility by setting seed. We create a <code>mids</code> object and then <code>complete()</code> it into a data frame. <code>{r imputeData, echo=TRUE, eval=FALSE} #Impute missing values # -convert the activity$date column back to a 'character' class for imputation  # -use mice::complete() to fill dataset using new imputed data # -#convert the date variable back to a date class (mice needed a character class to impute) activity$date &lt;- as.character(activity$date) imputedData &lt;- mice(activity, m=5, maxit=50, meth= 'pmm', seed = 500) newData &lt;- complete(imputedData,2) newData$date &lt;- as.Date(newData$date)</code></p>
 <ol style="list-style-type: decimal">
 <li>Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?</li>
