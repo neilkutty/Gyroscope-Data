@@ -1,4 +1,4 @@
-# Reproducible Research - Prog Assignment 1
+# Gyroscope Data
 Neil Kutty  
 July 16, 2016  
 
