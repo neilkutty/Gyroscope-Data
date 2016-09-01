@@ -1,4 +1,4 @@
-# Reproducible Research - Prog Assignment 1
+# Gyroscope Data
 Neil Kutty  
 July 16, 2016  
 
@@ -55,7 +55,7 @@ ts <- activity %>%
 hist(ts$totalSteps, main = "Total Steps Taken Each Day", col = "gray", labels = TRUE)
 ```
 
-![](PA1_template_files/figure-html/ts-1.png)\
+![](readme_files/figure-html/ts-1.png)\
 
 ```r
 #Mean and Median
@@ -101,7 +101,7 @@ ranked <- omitData %>%
 ggplot(ranked, aes(x=interval,y=averageSteps)) + geom_line(stat="identity")
 ```
 
-![](PA1_template_files/figure-html/avgDailyActivity-1.png)\
+![](readme_files/figure-html/avgDailyActivity-1.png)\
 
 ```r
 topInt <- ranked[which.max(ranked$averageSteps),]
@@ -175,7 +175,7 @@ ts2 <- newData %>%
 hist(ts2$totalSteps, main = "Total Steps Taken Each Day", col = "green", labels = TRUE)
 ```
 
-![](PA1_template_files/figure-html/ts2-1.png)\
+![](readme_files/figure-html/ts2-1.png)\
 
 ```r
 #Mean and Median
@@ -239,4 +239,4 @@ p <- ggplot(d,aes(x=interval,y=avgSteps))+
 plot(p)    
 ```
 
-![](PA1_template_files/figure-html/panelPatterns-1.png)\
+![](readme_files/figure-html/panelPatterns-1.png)\
